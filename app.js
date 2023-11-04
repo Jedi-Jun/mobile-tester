@@ -69,7 +69,9 @@ HTMLTemplate.section5 = () => `
 /* 6) window.visualViewport & innerHeight */
 HTMLTemplate.section6 = () => `
 <div class='visual-wrapper'>
-  <div class='visual-header'>header</div>
+  <div class='visual-header'>
+    header
+  </div>
   <div class='visual-content'>
     <div class='visual-content-innerHeight'>
       innerHeight
@@ -80,6 +82,7 @@ HTMLTemplate.section6 = () => `
       <div></div>
     </div>
   </div>
+  <input />
 </div>
 `;
 
