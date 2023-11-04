@@ -250,16 +250,20 @@ function handleSection6() {
     const visualViewportElement = document.querySelector(
       '.visual-content-visualViewport'
     );
+    const _ = value => {
+      if (typeof value !== 'number' || Number.isInteger(value)) return value;
+      return Number.parseFloat(value).toFixed(2);
+    };
     visualViewportElement.children[0].innerHTML = `
-      <span>height: ${window.visualViewport.height}</span>
-      <span>offsetLeft: ${window.visualViewport.offsetLeft}</span>
-      <span>offsetTop: ${window.visualViewport.offsetTop}</span>
-      <span>onresize: ${window.visualViewport.onresize}</span>
-      <span>onscroll: ${window.visualViewport.onscroll}</span>
-      <span>pageLeft: ${window.visualViewport.pageLeft}</span>
-      <span>pageTop: ${window.visualViewport.pageTop}</span>
-      <span>scale: ${window.visualViewport.scale}</span>
-      <span>width: ${window.visualViewport.width}</span>
+      <span>height: ${_(window.visualViewport.height)}</span>
+      <span>offsetLeft: ${_(window.visualViewport.offsetLeft)}</span>
+      <span>offsetTop: ${_(window.visualViewport.offsetTop)}</span>
+      <span>onresize: ${_(window.visualViewport.onresize)}</span>
+      <span>onscroll: ${_(window.visualViewport.onscroll)}</span>
+      <span>pageLeft: ${_(window.visualViewport.pageLeft)}</span>
+      <span>pageTop: ${_(window.visualViewport.pageTop)}</span>
+      <span>scale: ${_(window.visualViewport.scale)}</span>
+      <span>width: ${_(window.visualViewport.width)}</span>
     `;
   }
 }

@@ -9,7 +9,6 @@ body {
   height: calc(var(--vh, 1vh) * 100);
   background-color: cornflowerblue;
   color: rgb(190, 220, 229);
-  user-select: none;
 }
 
 h1 {
