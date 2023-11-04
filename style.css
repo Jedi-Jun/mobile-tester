@@ -102,6 +102,39 @@ hr {
   background-color: rgb(49, 49, 49);
 }
 
+/* dd */
+.visual-wrapper {
+  width: 100%;
+  height: 100%;
+  border: 5px solid #2b52ff5b;
+}
+.visual-wrapper .visual-header {
+  width: 100%;
+  height: 120px;
+  background-color: #2b52ff5b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.visual-wrapper .visual-content {
+  width: 100%;
+  height: calc(100% - 120px);
+  display: flex;
+}
+.visual-content-innerHeight,
+.visual-content-visualViewport {
+  flex: 1;
+  text-align: center;
+  padding-top: 1.5rem;
+}
+.visual-content-innerHeight div,
+.visual-content-visualViewport div {
+  padding-top: 1.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 /* Footer */
 .app-footer {
   width: auto;
