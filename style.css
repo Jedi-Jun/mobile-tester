@@ -1,3 +1,12 @@
+:root {
+  --primary-bg-color: cornflowerblue;
+  --secondary-bg-color: #4362ee9c;
+
+  --primary-border-color: lightblue;
+
+  --primary-font-color: rgb(190, 220, 229);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -6,11 +15,14 @@ body {
   margin: 0;
   width: 100%;
   height: calc(var(--vh, 1vh) * 100);
-  background-color: cornflowerblue;
-  color: rgb(190, 220, 229);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-font-color);
 }
 
-h1 {
+h1,
+h6 {
   margin: 0;
 }
 
@@ -19,9 +31,13 @@ a {
   cursor: pointer;
 }
 
+button {
+  cursor: pointer;
+}
+
 .app-main {
   width: auto;
-  height: 90%;
+  flex: 1;
   font-weight: 600;
   display: flex;
   flex-direction: column;
@@ -34,14 +50,10 @@ a {
 .app-header {
   text-align: center;
 }
-
-.app-content {
-  /* border: 1px solid black;
-  padding: 0.5rem; */
-}
+/* .app-content {} */
 
 .item {
-  border: 1px solid lightblue;
+  border: 1px solid var(--primary-border-color);
   min-width: 180px;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
@@ -63,6 +75,8 @@ a {
   display: flex;
   flex-direction: column;
   font-size: clamp(1rem, 2.75vw, 2rem);
+  background-color: var(--secondary-bg-color);
+  padding: 0.125rem 0.5rem;
 }
 .geo-wrapper th {
   text-align: left;
@@ -146,10 +160,22 @@ hr {
   background-color: lightgray;
 }
 
+/* push */
+.push-wrapper {
+  width: 100%;
+  padding: 0 14vw;
+}
+.push-header-wrapper,
+.push-body-wrapper {
+  background-color: var(--secondary-bg-color);
+  margin-bottom: 0.5rem;
+  padding: 1.2rem;
+}
+
 /* Footer */
 .app-footer {
   width: auto;
-  min-height: 10%;
+  flex: 0.2;
   font-size: clamp(0.85rem, 2.75vw, 2rem);
   font-weight: 600;
   display: grid;
@@ -160,7 +186,7 @@ hr {
   all: unset;
   text-align: center;
   cursor: pointer;
-  border: 1px solid lightblue;
+  border: 1px solid var(--primary-border-color);
 }
 
 .app-footer .nav:nth-child(-n + 3) {

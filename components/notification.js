@@ -1,25 +1,24 @@
-/* 7) Push Notification */
+/* 7) new Notification */
 const section7 = () => {
   const onClick = () => {
     Notification.requestPermission().then(perm => {
       const options = {
         body: `New message arrived! [${new Date().getMilliseconds()}]`,
         data: { title: 'chatApp' },
-        icon: 'nasa.svg',
+        // icon: 'nasa.svg',
+        icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1200px-NASA_logo.svg.png',
         tag: 'dm',
       };
       const notification = new Notification('Cocoa Talk', options);
+      console.log(perm);
+      console.log(notification);
 
       if (perm === 'granted') {
-        console.log(perm);
-        console.log(notification);
         notification.addEventListener('click', e => console.log(e));
       } else if (perm === 'denied') {
-        console.log(perm);
         notification.addEventListener('error', e => console.log(e));
       } else {
         // 'default'
-        console.log(perm);
       }
     });
   };
@@ -29,7 +28,7 @@ const section7 = () => {
   }, 100);
   return `
     <div>
-      Hello, Push Notification!
+      new Notification!
       <button id="noti-button-js">Click</button>
     </div>
     `;

@@ -15,6 +15,7 @@ const section1 = () => {
         <td class="geo get-long" data-id="long"></td>
       </tr>
     </table>
+    <h6 class="geo-perm">geolocation permission: </h6>
   `;
 };
 
@@ -29,12 +30,22 @@ const getGeoLocation = () => {
       ele.innerText = geo[ele.dataset.id];
     });
   };
-
   const onError = err => {
     console.error(err);
   };
 
   navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+  // geolocation permissionStatus
+  const geoPermission = document.querySelector('.geo-perm');
+  navigator.permissions
+    .query({ name: 'geolocation' })
+    .then(permissionStatus => {
+      geoPermission.innerText = `geolocation permission: ${permissionStatus.state}`;
+      permissionStatus.onchange = () => {
+        geoPermission.innerText = `geolocation permission: ${permissionStatus.state}`;
+      };
+    });
 };
 
 window.addEventListener('load', () => {
