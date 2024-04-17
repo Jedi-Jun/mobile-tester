@@ -22,6 +22,7 @@ body {
 }
 
 h1,
+h5,
 h6 {
   margin: 0;
 }
@@ -61,12 +62,16 @@ button {
 
 /* Navigator */
 .navigator-wrapper {
+  padding: 0 0.5rem;
+  height: 75vh;
+  overflow-y: auto;
+}
+.navigator-list-wrapper {
+  width: 100%;
   font-weight: normal;
   font-size: 1.125rem;
-  margin-right: 0.5rem;
 }
-
-.navigator-wrapper li {
+.navigator-list-wrapper li {
   margin-bottom: 0.5rem;
 }
 

@@ -12,20 +12,20 @@ const section4 = (data = null) => {
 };
 
 const getIpInfo = async () => {
-  const URL = 'https://test.dongrim.site/api/v1/ip';
+  const URL = 'https://home.dongrim.site/api/v1/ip';
 
   abortController = new AbortController();
   const signal = abortController.signal;
 
   fetch(URL, { signal })
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       const result = createList(data);
       appMain.innerHTML = section4(result);
     }); // .catch(err => console.log(err));
 };
 
-const createList = data => {
+const createList = (data) => {
   if (!data) return null;
 
   let HTMLString = '';

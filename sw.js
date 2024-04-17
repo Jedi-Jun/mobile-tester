@@ -6,7 +6,7 @@ self.addEventListener('push', event => {
   self.registration.showNotification(data.title, {
     body: data.desc || `Test-body(${Math.random().toFixed(2)})`,
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1200px-NASA_logo.svg.png',
-    vibrate: [200, 100, 200, 100, 200, 100, 200],
+    // vibrate: [200, 100, 200, 100, 200, 100, 200],
     tag: 'dm',
   });
 });
@@ -19,13 +19,14 @@ self.addEventListener('notificationclick', function (event) {
   event.waitUntil(
     (async () => {
       const allClients = await clients.matchAll({
+        type: 'window',
         includeUncontrolled: true,
       });
+      console.log(allClients);
 
       let targetClient;
       for (const client of allClients) {
         const url = new URL(client.url);
-        console.log(client);
         // if (url.hostname === 'test.dongrim.site') {
         if (url.pathname === '/client/') {
           client.focus();
@@ -35,6 +36,7 @@ self.addEventListener('notificationclick', function (event) {
       }
 
       if (!targetClient) {
+        // targetClient = await clients.openWindow('/');
         targetClient = await clients.openWindow('/client/');
       }
     })()
@@ -42,7 +44,7 @@ self.addEventListener('notificationclick', function (event) {
 });
 
 //
-self.addEventListener('install', ev => {
+self.addEventListener('install', event => {
   //service worker is installed.
   console.log('installed');
 
@@ -50,7 +52,7 @@ self.addEventListener('install', ev => {
   // self.skipWaiting();
 });
 
-self.addEventListener('activate', ev => {
+self.addEventListener('activate', event => {
   //service worker is activated
   console.log('activated');
 
@@ -58,11 +60,12 @@ self.addEventListener('activate', ev => {
   // self.clients.clamin();
 });
 
-self.addEventListener('fetch', ev => {
+self.addEventListener('fetch', event => {
   //service worker intercepted a fetch call
   // console.log('intercepted a http request', ev.request);
 });
 
-self.addEventListener('message', ev => {
+self.addEventListener('message', event => {
   //message from webpage
+  // console.log(event);
 });

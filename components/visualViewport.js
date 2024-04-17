@@ -25,26 +25,23 @@ window.addEventListener('resize', innerHeight);
 window.visualViewport.addEventListener('resize', visualViewport);
 
 function innerHeight() {
-  const innerHeightElement = document.querySelector(
-    '.visual-content-innerHeight'
-  );
+  const innerHeightElement = document.querySelector('.visual-content-innerHeight');
   if (!innerHeightElement) return;
   innerHeightElement.children[0].innerHTML = `
-    <span>window.innerHeight: ${window.innerHeight}</span>
     <span>window.innerWidth: ${window.innerWidth}</span>
+    <span>window.innerHeight: ${window.innerHeight}</span>
     `;
 }
 
 function visualViewport() {
-  const visualViewportElement = document.querySelector(
-    '.visual-content-visualViewport'
-  );
+  const visualViewportElement = document.querySelector('.visual-content-visualViewport');
   if (!visualViewportElement) return;
-  const _ = value => {
+  const _ = (value) => {
     if (typeof value !== 'number' || Number.isInteger(value)) return value;
     return Number.parseFloat(value).toFixed(2);
   };
   visualViewportElement.children[0].innerHTML = `
+      <span>width: ${_(window.visualViewport.width)}</span>
       <span>height: ${_(window.visualViewport.height)}</span>
       <span>offsetLeft: ${_(window.visualViewport.offsetLeft)}</span>
       <span>offsetTop: ${_(window.visualViewport.offsetTop)}</span>
@@ -53,7 +50,6 @@ function visualViewport() {
       <span>pageLeft: ${_(window.visualViewport.pageLeft)}</span>
       <span>pageTop: ${_(window.visualViewport.pageTop)}</span>
       <span>scale: ${_(window.visualViewport.scale)}</span>
-      <span>width: ${_(window.visualViewport.width)}</span>
     `;
 }
 
