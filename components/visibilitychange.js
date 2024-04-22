@@ -15,11 +15,12 @@ const events = [
   { name: 'blur', message: 'Blur: user went out.' },
 ];
 
-events.forEach(event => {
-  window.addEventListener(event.name, () => createList(event.message));
+events.forEach((event) => {
+  window.addEventListener(event.name, () => createList(event.name, event.message));
 });
 
-const createList = text => {
+const createList = (eventName, text) => {
+  // console.log(document.visibilityState, ', ', new Date());
   const vis_wrapper = document.querySelector('.vis-wrapper');
   const vis_bottom = document.querySelector('.vis-bottom');
   if (!vis_wrapper) return;
@@ -38,13 +39,19 @@ const createList = text => {
       second: '2-digit',
     };
     const time = new Intl.DateTimeFormat('en-US', options).format();
-    span.innerText = time;
+    span.innerText = `${time} (hidden)`;
     div.append(hr1, span, hr2);
     vis_wrapper.insertBefore(div, vis_bottom);
   }
 
   const li = document.createElement('li');
-  li.innerText = text;
+  if (eventName === 'visibilitychange' && document.hidden) {
+    li.innerText = 'visibilityState: hidden';
+  } else if (eventName === 'visibilitychange' && !document.hidden) {
+    li.innerText = 'visibilityState: visible';
+  } else {
+    li.innerText = text;
+  }
   vis_wrapper.insertBefore(li, vis_bottom);
   vis_bottom.scrollIntoView(false);
 };

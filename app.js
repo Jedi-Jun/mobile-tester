@@ -5,7 +5,7 @@ import { section4, abortController } from './components/ip.js';
 import { section5 } from './components/visibilitychange.js';
 import { section6 } from './components/visualViewport.js';
 import { section7 } from './components/notification.js';
-import {  section8 } from './components/push.js';
+import { section8 } from './components/push.js';
 
 const appMain = document.querySelector('.app-main');
 const navButtons = document.querySelectorAll('.nav');
@@ -17,7 +17,7 @@ const HTMLTemplates = {
   section5,
   section6,
   section7,
-  section8
+  section8,
 };
 
 window.addEventListener('load', () => {
@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
-navButtons.forEach(button => {
+navButtons.forEach((button) => {
   button.addEventListener('click', () => {
     selectedButtonEffect(button);
     const section = button.dataset.id;
@@ -36,6 +36,6 @@ navButtons.forEach(button => {
 });
 
 function selectedButtonEffect(target) {
-  navButtons.forEach(btn => (btn.style.textShadow = 'none'));
+  navButtons.forEach((btn) => (btn.style.textShadow = 'none'));
   target.style.textShadow = '1px 0px 0px black';
 }

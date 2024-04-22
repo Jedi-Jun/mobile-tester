@@ -8,12 +8,18 @@ const section6 = () => `
   </div>
   <div class='visual-content'>
     <div class='visual-content-innerHeight'>
-      innerHeight
-      <div></div>
+      <div>
+        <span>window.innerHeight</span>
+        <code>window\n.addEventListener\n('resize', cb);</code>
+      </div>
+      <p></p>
       </div>
       <div class='visual-content-visualViewport'>
-      visualViewport
-      <div></div>
+      <div>
+        <span>window.visualViewport.width</span>
+        <code>window.visualViewport\n.addEventListener\n('resize', cb);</code>
+      </div>
+      <p></p>
     </div>
   </div>
   <input />
@@ -27,9 +33,9 @@ window.visualViewport.addEventListener('resize', visualViewport);
 function innerHeight() {
   const innerHeightElement = document.querySelector('.visual-content-innerHeight');
   if (!innerHeightElement) return;
-  innerHeightElement.children[0].innerHTML = `
-    <span>window.innerWidth: ${window.innerWidth}</span>
-    <span>window.innerHeight: ${window.innerHeight}</span>
+  innerHeightElement.children[1].innerHTML = `
+    <span>innerWidth: ${window.innerWidth}</span>
+    <span>innerHeight: ${window.innerHeight}</span>
     `;
 }
 
@@ -40,7 +46,7 @@ function visualViewport() {
     if (typeof value !== 'number' || Number.isInteger(value)) return value;
     return Number.parseFloat(value).toFixed(2);
   };
-  visualViewportElement.children[0].innerHTML = `
+  visualViewportElement.children[1].innerHTML = `
       <span>width: ${_(window.visualViewport.width)}</span>
       <span>height: ${_(window.visualViewport.height)}</span>
       <span>offsetLeft: ${_(window.visualViewport.offsetLeft)}</span>

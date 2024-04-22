@@ -21,16 +21,16 @@ const section1 = () => {
 
 const getGeoLocation = () => {
   const coords = document.querySelectorAll('.geo');
-  const onSuccess = pos => {
+  const onSuccess = (pos) => {
     const geo = {
       lat: pos.coords.latitude,
       long: pos.coords.longitude,
     };
-    coords.forEach(ele => {
+    coords.forEach((ele) => {
       ele.innerText = geo[ele.dataset.id];
     });
   };
-  const onError = err => {
+  const onError = (err) => {
     console.error(err);
   };
 
@@ -38,14 +38,12 @@ const getGeoLocation = () => {
 
   // geolocation permissionStatus
   const geoPermission = document.querySelector('.geo-perm');
-  navigator.permissions
-    .query({ name: 'geolocation' })
-    .then(permissionStatus => {
+  navigator.permissions.query({ name: 'geolocation' }).then((permissionStatus) => {
+    geoPermission.innerText = `geolocation permission: ${permissionStatus.state}`;
+    permissionStatus.onchange = () => {
       geoPermission.innerText = `geolocation permission: ${permissionStatus.state}`;
-      permissionStatus.onchange = () => {
-        geoPermission.innerText = `geolocation permission: ${permissionStatus.state}`;
-      };
-    });
+    };
+  });
 };
 
 window.addEventListener('load', () => {

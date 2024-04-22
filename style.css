@@ -144,6 +144,7 @@ hr {
 }
 .visual-content-innerHeight,
 .visual-content-visualViewport {
+  font-size: clamp(0.85rem, 2.75vw, 1.35rem);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -151,8 +152,8 @@ hr {
   align-items: center;
   padding-bottom: 1rem;
 }
-.visual-content-innerHeight div,
-.visual-content-visualViewport div {
+.visual-content-innerHeight p,
+.visual-content-visualViewport p {
   padding-top: 1.5rem;
   font-size: clamp(0.85rem, 2.75vw, 1.35rem);
   display: flex;
